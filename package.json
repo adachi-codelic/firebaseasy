@@ -1,0 +1,24 @@
+{
+  "name": "firebaseasy",
+  "version": "0.0.2",
+  "description": "Easy to use firebase",
+  "main": "./lib/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "deploy": "npx tsc && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/91nakashima/firebaseasy"
+  },
+  "homepage": "https://github.com/91nakashima/firebaseasy",
+  "keywords": ["firebase"],
+  "author": "91nakashima",
+  "license": "ISC",
+  "dependencies": {
+    "build": "^0.1.4",
+    "firebase": "^9.6.7",
+    "webpack-dev-server": "^4.7.4"
+  }
+}
