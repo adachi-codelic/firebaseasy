@@ -1,4 +1,4 @@
-# firebaseasy | インストール
+# firebaseasy
 
 Nakashima Package Manager
 略して【npm】で入れます。

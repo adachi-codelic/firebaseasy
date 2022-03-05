@@ -1,6 +1,6 @@
 {
   "name": "@firebaseasy/firestore",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Easy to use firestore",
   "main": "./lib/src/index.js",
   "scripts": {
@@ -10,8 +10,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com.inc:91nakashima/firebaseasy"
+    "url": "https://github.com/91nakashima/firebaseasy/tree/main/packeges/firestore"
   },
+  "homepage": "https://github.com/91nakashima/firebaseasy",
   "keywords": ["firebase"],
   "author": "91nakashima",
   "license": "ISC",
