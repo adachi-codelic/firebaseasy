@@ -1,0 +1,24 @@
+{
+  "name": "@firebaseasy/firestore",
+  "version": "0.0.2",
+  "description": "Easy to use firestore",
+  "main": "./lib/src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "deploy": "npx tsc && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com.inc:91nakashima/firebaseasy"
+  },
+  "keywords": ["firebase"],
+  "author": "91nakashima",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.6.8"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

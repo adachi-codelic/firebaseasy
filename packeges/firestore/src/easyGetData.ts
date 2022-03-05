@@ -5,7 +5,7 @@ import { orderBy, limit } from 'firebase/firestore'
 
 import { CollectionReference, DocumentReference } from 'firebase/firestore'
 import { Query } from 'firebase/firestore'
-import { QueryOption, WhereOption } from '../type/easyGetData'
+import { QueryOption, WhereOption } from '../types/easyGetData'
 
 /**
  * check type

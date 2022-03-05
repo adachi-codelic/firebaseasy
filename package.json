@@ -1,8 +1,7 @@
 {
   "name": "firebaseasy",
-  "version": "0.0.2",
-  "description": "Easy to use firebase",
-  "main": "./lib/src/index.js",
+  "version": "0.0.0",
+  "description": "firebaseasy monorepo",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
@@ -18,7 +17,9 @@
   "license": "ISC",
   "dependencies": {
     "build": "^0.1.4",
-    "firebase": "^9.6.7",
-    "webpack-dev-server": "^4.7.4"
-  }
+    "ts-loader": "^9.2.7",
+    "webpack-dev-server": "^4.7.4",
+    "workspace": "^0.0.1-preview.1"
+  },
+  "workspaces": ["packeges/*", "packeges/**/*"]
 }
