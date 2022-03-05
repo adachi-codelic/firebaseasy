@@ -7,6 +7,11 @@ import { CollectionReference, DocumentReference } from 'firebase/firestore'
 import { Query } from 'firebase/firestore'
 import { QueryOption, WhereOption } from '../types/easyGetData'
 
+type FirebaseGetDataType<T, U> = U extends '' ? null : 
+  U extends `${infer Collection}/${infer Document}/${infer Rest}` ? FirebaseGetDataType<T, Rest> :
+  U extends `${infer Collection}/${infer Document}` ? T :
+  U extends `${infer Collection}` ? T[] : never
+
 /**
  * check type
  */
@@ -19,10 +24,10 @@ const isUseType = (r: any): r is CollectionReference | Query => {
 /**
  * get Doc or getDocs
  */
-export async function easyGetData<T> (
-  path: string,
+export async function easyGetData<T, U extends string> (
+  path: U,
   option: QueryOption = {}
-): Promise<T[] | T | undefined | Error> {
+): Promise<FirebaseGetDataType<T, U> | undefined | Error> {
   const collectionArray = path.split('/').filter(d => d)
   if (!collectionArray.length) return new Error()
 
@@ -48,7 +53,7 @@ export async function easyGetData<T> (
       getDoc(reference)
         .then(doc => {
           if (!doc.exists) return resolve(undefined)
-          resolve(doc.data() as T)
+          resolve(doc.data() ? doc.data() as FirebaseGetDataType<T, U> : undefined)
         })
         .catch(() => rejects())
     })
@@ -96,8 +101,11 @@ export async function easyGetData<T> (
   const arr: Array<T> = []
   res.forEach(el => {
     if (!el.exists) return
-    arr.push(el.data() as T)
+    const maybeData = el.data()
+    if(maybeData) {
+      arr.push(maybeData as T)
+    }
   })
 
-  return arr
+  return arr as FirebaseGetDataType<T, U>
 }
