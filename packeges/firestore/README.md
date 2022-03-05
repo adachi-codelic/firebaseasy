@@ -9,11 +9,11 @@ npm i @firebaseasy/firestore
 
 # 使い方
 
-```bash
-import { easySetDoc, easyGetData, easyDelete } from 'easy-firebase-functions'
+```js
+import { easySetDoc, easyGetData, easyDelete } from '@firebaseasy/firestore'
 
 // Type
-import { EasySetDoc, QueryOption, WhereOption } from 'easy-firebase-functions'
+import { EasySetDoc, QueryOption, WhereOption } from '@firebaseasy/firestore'
 ```
 
 # 機能
