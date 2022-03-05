@@ -1,4 +1,4 @@
-# firebaseasy
+# firebaseasy(cliant side)
 
 Nakashima Package Manager
 略して【npm】で入れます。
@@ -10,7 +10,7 @@ npm i @firebaseasy/firestore
 # 使い方
 
 ```js
-import { easySetDoc, easyGetData, easyDelete } from '@firebaseasy/firestore'
+import { easySetDoc, easyGetData, easyDelDoc } from '@firebaseasy/firestore'
 
 // Type
 import { EasySetDoc, QueryOption, WhereOption } from '@firebaseasy/firestore'
@@ -89,5 +89,5 @@ easyGetData('anime/abcdefghijklmnopqrstuvwxyz')
 
 ```js
 // delete document
-easyDelete('anime/abcdefghijklmnopqrstuvwxyz')
+easyDelDoc('anime/abcdefghijklmnopqrstuvwxyz')
 ```

@@ -1,0 +1,18 @@
+{
+  "name": "@firebaseasy/storage",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com.inc:91nakashima/firebaseasy"
+  },
+  "author": "91nakashima",
+  "license": "ISC",
+  "dependencies": {
+    "firebase": "^9.6.8"
+  }
+}

@@ -1,7 +1,7 @@
 // modules
 export { easySetDoc } from './easySetDoc'
 export { easyGetData } from './easyGetData'
-export { easyDelete } from './easyDelete'
+export { easyDelDoc } from './easyDelDoc'
 
 // type
 export { WhereOption, QueryOption } from '../types/easyGetData'
