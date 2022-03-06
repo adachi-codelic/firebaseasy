@@ -7,7 +7,7 @@ import { CollectionReference, DocumentReference } from 'firebase/firestore'
 import { Query } from 'firebase/firestore'
 import { QueryOption, WhereOption } from '../types/easyGetData'
 
-type FirebaseGetDataType<T, U> = U extends '' ? null : 
+type FirebaseGetDataType<T, U> = U extends '' ? never : 
   U extends `${infer Collection}/${infer Document}/${infer Rest}` ? FirebaseGetDataType<T, Rest> :
   U extends `${infer Collection}/${infer Document}` ? T :
   U extends `${infer Collection}` ? T[] : never
@@ -27,9 +27,12 @@ const isUseType = (r: any): r is CollectionReference | Query => {
 export function easyGetData<T> (
   option: QueryOption = {}
 ) {
-  return async <U extends string>(path: U): Promise< Error | Promise<unknown> | FirebaseGetDataType<T, U>> => {
+  return async <U extends string>(path: U): Promise<undefined | FirebaseGetDataType<T, U>> => {
     const collectionArray = path.split('/').filter(d => d)
-    if (!collectionArray.length) return new Error()
+    // このエラーは型チェックで弾けるのでコメントアウト
+    // if (!collectionArray.length) return new Error()
+
+    // Union型からErrorを消した方があとで ?? や ?. !. が使えるので消した
 
     let reference: Query | CollectionReference | DocumentReference | null = null
     const db = getFirestore()
@@ -88,11 +91,11 @@ export function easyGetData<T> (
      * https://firebase.google.com/docs/firestore/query-data/order-limit-data?hl=ja#order_and_limit_data
      */
     if (option.limit) {
-      if (!isUseType(reference)) return new Error()
+      if (!isUseType(reference)) return undefined
       reference = query(reference, limit(option.limit))
     }
 
-    if (!isUseType(reference)) return new Error()
+    if (!isUseType(reference)) return undefined
     const res = await getDocs(reference)
 
     /**
@@ -112,4 +115,9 @@ export function easyGetData<T> (
   
 }
 
-const a = easyGetData<number>()('b/c/d')
+async function test() {
+  const maybeNumbers = await easyGetData<number>()('b/c/d')
+  const maybeNum = await easyGetData<number>()('b/c')
+
+  // maybeNumbers?.map(n => n + 1) などで呼び出し可能
+} 
